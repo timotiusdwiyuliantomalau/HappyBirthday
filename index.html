@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        background: #020202;
+        cursor: crosshair;
+      }
+      canvas {
+        display: block;
+      }
+      h1 {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        width: 100%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-family: "Source Sans Pro";
+        font-size: 5em;
+        font-weight: 900;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      
+      @font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI9w2_Gwfo.ttf) format('truetype');
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #a27bcc;
+  background: radial-gradient(ellipse at center, #a27bcc 0%, #6c5299 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a27bcc', endColorstr='#6c5299', GradientType=1);
+}
+/* ============================================== POSITION
+*/
+.cake {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 100px;
+  height: 100px;
+}
+/* ============================================== BASE
+*/
+.cake:after {
+  background: #ebe3e1;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 2px;
+}
+/* ============================================== Candle
+*/
+.velas {
+  background: #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -2.5px;
+  margin-top: -8.33333333px;
+  width: 5px;
+  height: 16.66666667px;
+}
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+.velas:after {
+  top: 25%;
+  left: 0;
+}
+.velas:before {
+  top: 45%;
+  left: 0;
+}
+/* ============================================== Fire
+*/
+.fuego {
+  border-radius: 100%;
+  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  margin-left: -3.33333333px;
+  width: 6.66666667px;
+  height: 12.5px;
+}
+.fuego:nth-child(1) {
+  -webkit-animation: fuego 2s infinite;
+          animation: fuego 2s infinite;
+}
+.fuego:nth-child(2) {
+  -webkit-animation: fuego 1.5s infinite;
+          animation: fuego 1.5s infinite;
+}
+.fuego:nth-child(3) {
+  -webkit-animation: fuego 1s infinite;
+          animation: fuego 1s infinite;
+}
+.fuego:nth-child(4) {
+  -webkit-animation: fuego 0.5s infinite;
+          animation: fuego 0.5s infinite;
+}
+.fuego:nth-child(5) {
+  -webkit-animation: fuego 0.2s infinite;
+          animation: fuego 0.2s infinite;
+}
+/* ============================================== Animation Fire
+*/
+@-webkit-keyframes fuego {
+  0% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    transform: translateY(-20px) scale(0);
+  }
+  100% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes fuego {
+  0% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    transform: translateY(-20px) scale(0);
+  }
+  100% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+}
+/* ============================================== Frosting
+*/
+.cobertura {
+  background: #ece7e3;
+  border-radius: 50px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-left: -27.77777778px;
+  margin-top: -5px;
+  width: 55.55555556px;
+  height: 12.5px;
+  z-index: 10;
+}
+.cobertura:after,
+.cobertura:before {
+  background: #ece7e3;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+}
+.cobertura:after {
+  top: 6.66666667px;
+  right: 14.28571429px;
+}
+.cobertura:before {
+  top: 10px;
+  right: 9.09090909px;
+}
+/* ============================================== BIZCOCHO
+*/
+.bizcocho {
+  background: #6d3826;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 33.33333333px;
+}
+.bizcocho:after,
+.bizcocho:before {
+  background: rgba(236, 231, 227, 0.6);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+}
+.bizcocho:after {
+  top: 30%;
+  left: 0;
+}
+.bizcocho:before {
+  top: 60%;
+  left: 0;
+}
+p{
+    width: 10em;
+    font-size: larger;
+    color: whitesmoke;
+    font-weight: 600;
+}
+input{
+    font-size: larger;
+}
+#camera-illustration {
+  margin: 2rem auto;
+  display: block;
+  max-width: 80vw;
+  max-height: 90vh;
+}
+
+#picture-group {
+  transform-origin: 25% 50%;
+  animation-name: picture-group;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+
+#mountain-picture {
+  transform-origin: 75% 15%;
+  animation-name: mountains;
+  animation-duration: 3s;
+  animation-iteration-count:  infinite;
+}
+
+#tree-picture {
+  animation-name: trees;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#car-picture {
+  transform-origin: 70% 80%;
+  animation-name: car;
+  animation-duration: 3s;
+  animation-iteration-count:  infinite;
+}
+
+@keyframes picture-group {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  33% {
+    opacity: 1;
+  }
+}
+
+@keyframes trees {
+  from {
+     transform: translate(-400px, 0);
+  }
+  50% {
+    transform: translate(-100px, 0);
+  }
+}
+
+@keyframes mountains {
+  from {
+    transform: translate(-350px, 240px)
+  }
+  50% {
+    transform: translate(-50px, 240px) 
+  }
+}
+
+@keyframes car {
+  from {
+    transform: translate(-400px, -200px) 
+  }
+  50% {
+    transform: translate(-100px, -200px) 
+  }
+}
+
+
+
+/* ============================================== TEXT
+*/
+
+
+/* ============================================== TEXT
+*/
+
+    </style>
+  </head>
+  <body>
+    <h1>Happy Birthday</h1>
+    <canvas id="birthday"></canvas>
+    <form onsubmit="handleInput(event)" style="display: flex;flex-direction: column;position: absolute;top: 5%;left: 50%; translate: -50%;">
+        <h2 style="text-align: center;font-size: 2em;color: burlywood;">by timotius</h2>
+    <p>Siapa Nama Mu : </p>
+    <input required class="nameInput" type="text" name="name">
+    <span style="display: flex;flex-direction: row;align-items: center;">
+    <p>Umur</p>
+    <input required class="ageInput" style="height: fit-content;" type="number" value="0" name="age" id="">
+</span>
+<button type="submit" style="width: fit-content;font-size: medium;background-color: burlywood; font-weight: 600;cursor: pointer;">Kirim</button>
+</form>
+
+    <div class="cake">
+        <div class="velas">
+          <div class="fuego"></div>
+          <div class="fuego"></div>
+          <div class="fuego"></div>
+          <div class="fuego"></div>
+          <div class="fuego"></div>
+        </div>
+        <div class="cobertura"></div>
+        <div class="bizcocho"></div>
+    </div>
+    <div style="position: absolute;top: 40%;left: 50%;translate: -50%;display: flex;scale: 70%;">
+        <div id="foto" style="display: flex;">
+            <img  id="car-picture" style="width: 15em;margin-top: 12em;height:15em;" src="./poto1.jpg" alt="" >
+        <img  id="tree-picture" style="width: 15em;margin-top: 12em;height:15em" src="./poto2.jpg" alt="" >
+        <img  id="mountain-picture" style="width: 15em;margin-top: 12em;height:15em" src="./poto3.jpg" alt="" >
+    </div>
+    </div>
+
+    
+  
+  <script>
+    // helper functions
+    function handleInput(event){
+        if(typeof event!="undefined"){
+            event.preventDefault();
+            canvas.style.opacity="100";
+            document.querySelector("form").style.display="none";
+            document.querySelector("#foto").style.display="flex";
+            document.querySelector("h1").style.display="block";
+            document.querySelector("h1").innerHTML="Happy Birthday "+document.querySelector(".nameInput").value+" yang ke-"+document.querySelector(".ageInput").value;
+        }
+        return false
+    }
+    document.querySelector("h1").style.display="none";
+    document.querySelector("#foto").style.display="none";
+    const PI2 = Math.PI * 2
+const random = (min, max) => Math.random() * (max - min + 1) + min | 0
+const timestamp = _ => new Date().getTime()
+
+// container
+class Birthday {
+  constructor() {
+    this.resize()
+
+    // create a lovely place to store the firework
+    this.fireworks = []
+    this.counter = 0
+
+  }
+  
+  resize() {
+    this.width = canvas.width = window.innerWidth
+    let center = this.width / 2 | 0
+    this.spawnA = center - center / 4 | 0
+    this.spawnB = center + center / 4 | 0
+    
+    this.height = canvas.height = window.innerHeight
+    this.spawnC = this.height * .1
+    this.spawnD = this.height * .5
+    
+  }
+  
+  onClick(evt) {
+     let x = evt.clientX || evt.touches && evt.touches[0].pageX
+     let y = evt.clientY || evt.touches && evt.touches[0].pageY
+     
+     let count = random(3,5)
+     for(let i = 0; i < count; i++) this.fireworks.push(new Firework(
+        random(this.spawnA, this.spawnB),
+        this.height,
+        x,
+        y,
+        random(0, 260),
+        random(30, 110)))
+          
+     this.counter = -1
+     
+  }
+  
+  update(delta) {
+    ctx.globalCompositeOperation = 'hard-light'
+    ctx.fillStyle = `rgba(20,20,20,${ 7 * delta })`
+    ctx.fillRect(0, 0, this.width, this.height)
+
+    ctx.globalCompositeOperation = 'lighter'
+    for (let firework of this.fireworks) firework.update(delta)
+
+    // if enough time passed... create new new firework
+    this.counter += delta * 3 // each second
+    if (this.counter >= 1) {
+      this.fireworks.push(new Firework(
+        random(this.spawnA, this.spawnB),
+        this.height,
+        random(0, this.width),
+        random(this.spawnC, this.spawnD),
+        random(0, 360),
+        random(30, 110)))
+      this.counter = 0
+    }
+
+    // remove the dead fireworks
+    if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead)
+
+  }
+}
+
+class Firework {
+  constructor(x, y, targetX, targetY, shade, offsprings) {
+    this.dead = false
+    this.offsprings = offsprings
+
+    this.x = x
+    this.y = y
+    this.targetX = targetX
+    this.targetY = targetY
+
+    this.shade = shade
+    this.history = []
+  }
+  update(delta) {
+    if (this.dead) return
+
+    let xDiff = this.targetX - this.x
+    let yDiff = this.targetY - this.y
+    if (Math.abs(xDiff) > 3 || Math.abs(yDiff) > 3) { // is still moving
+      this.x += xDiff * 2 * delta
+      this.y += yDiff * 2 * delta
+
+      this.history.push({
+        x: this.x,
+        y: this.y
+      })
+
+      if (this.history.length > 20) this.history.shift()
+
+    } else {
+      if (this.offsprings && !this.madeChilds) {
+        
+        let babies = this.offsprings / 2
+        for (let i = 0; i < babies; i++) {
+          let targetX = this.x + this.offsprings * Math.cos(PI2 * i / babies) | 0
+          let targetY = this.y + this.offsprings * Math.sin(PI2 * i / babies) | 0
+
+          birthday.fireworks.push(new Firework(this.x, this.y, targetX, targetY, this.shade, 0))
+
+        }
+
+      }
+      this.madeChilds = true
+      this.history.shift()
+    }
+    
+    if (this.history.length === 0) this.dead = true
+    else if (this.offsprings) { 
+        for (let i = 0; this.history.length > i; i++) {
+          let point = this.history[i]
+          ctx.beginPath()
+          ctx.fillStyle = 'hsl(' + this.shade + ',100%,' + i + '%)'
+          ctx.arc(point.x, point.y, 1, 0, PI2, false)
+          ctx.fill()
+        } 
+      } else {
+      ctx.beginPath()
+      ctx.fillStyle = 'hsl(' + this.shade + ',100%,50%)'
+      ctx.arc(this.x, this.y, 1, 0, PI2, false)
+      ctx.fill()
+    }
+
+  }
+}
+
+let canvas = document.getElementById('birthday')
+let ctx = canvas.getContext('2d')
+
+let then = timestamp()
+
+let birthday = new Birthday
+window.onresize = () => birthday.resize()
+document.onclick = evt => birthday.onClick(evt)
+document.ontouchstart = evt => birthday.onClick(evt)
+
+  ;(function loop(){
+  	requestAnimationFrame(loop)
+
+  	let now = timestamp()
+  	let delta = now - then
+
+    then = now
+    birthday.update(delta / 1000)
+  	
+
+  })()
+  if(handleInput) canvas.style.opacity="0";
+  </script>
+</html>
